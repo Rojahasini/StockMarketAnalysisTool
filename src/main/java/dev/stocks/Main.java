@@ -8,6 +8,20 @@ import static dev.stocks.Models.pctChange;
 public class Main {
     public static void main(String[] args) throws IOException {
         String key = System.getenv("ALPHAVANTAGE_API_KEY");
+
+        if (key == null || key.isBlank()) {
+            try {
+                key = java.nio.file.Files.readString(
+                        java.nio.file.Paths.get("APIkey.txt")).trim();
+            } catch (IOException e) {
+                throw new RuntimeException("API key not found in env or file", e);
+            }
+        }
+
+        if (key == null || key.isBlank()) {
+            throw new IllegalArgumentException("API key missing");
+        }
+        
         AlphaVantageClient api = new AlphaVantageClient(key);
 
         // 🔧 Configure here
