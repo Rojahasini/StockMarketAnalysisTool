@@ -11,7 +11,9 @@ public class Main {
         AlphaVantageClient api = new AlphaVantageClient(key);
 
         // 🔧 Configure here
-        List<String> symbols = List.of("AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "META");
+        List<String> symbols = List.of("AAPL");
+        // List<String> symbols = List.of("AAPL", "MSFT", "GOOGL", "AMZN", "TSLA",
+        // "META");
         int lookbackDays = 20; // for trend & percent changes
         int maWindow = 5; // moving average window
         int topK = 3;
@@ -69,4 +71,3 @@ public class Main {
         System.out.println("\nData window for " + demo + ": " + oldest + " → " + newest);
     }
 }
-
